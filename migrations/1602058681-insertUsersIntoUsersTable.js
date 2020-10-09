@@ -34,8 +34,9 @@ exports.down = async (sql) => {
   for (const user in users) {
     await sql`
       DELETE FROM users WHERE
-        first_name = ${user.first_name} AND
-        last_name = ${user.last_name};
+//i think there is an error on the loop, because user is the number of the index.
+        first_name = ${users[user].first_name} AND
+        last_name = ${users[user].last_name};
     `;
   }
   // Or, by hand:
